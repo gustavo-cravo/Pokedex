@@ -9,3 +9,25 @@
 .content h1{
     margin: 0;
 }
+
+ol.pokemons{
+    /*Define as colunas*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /* Define as margens das colunas */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ol.pokemons li{
+    /* Define o espaçamento de cada listagem de pokemon */
+    margin: .5rem;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    height: 100px;
+    /* Define as cores */
+    background-color: #14A06F;
+    color: white;
+}
