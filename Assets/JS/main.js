@@ -1,5 +1,3 @@
-
-
 // Esta função vai gerar o texto da lista em html Inicialmnente apenas com os dados dos nomes
 function convertHTML(pokemon){
     return `<li class="pokemon">
