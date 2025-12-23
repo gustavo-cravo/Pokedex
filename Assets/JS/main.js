@@ -20,14 +20,7 @@ function convertHTML(pokemon){
 
 const pokemonList = document.getElementById('pokemonList');
 
-pokeApi.getPokemns().then((pokemons) => {
-    const listItens = []
+pokeApi.getPokemns().then((pokemons = []) => {
 
-    for(let i = 0; i < pokemons.length; i++)
-    {
-        let pokemon = pokemons[i];
-        listItens.push(convertHTML(pokemon))
-    }
-
-    console.log(listItens);
+    pokemonList.innerHTML += pokemons.map(convertHTML).join('')
 })
