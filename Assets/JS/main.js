@@ -15,8 +15,6 @@ function convertHTML(pokemon){
             </li>`
 }
 
-const pokemonList = document.getElementById('pokemonList');
-
 pokeApi.getPokemns().then((pokemons = []) => {
 
     pokemonList.innerHTML += pokemons.map(convertHTML).join('')
