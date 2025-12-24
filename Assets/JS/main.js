@@ -2,6 +2,7 @@ const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
 const modalOverlay = document.getElementById('modalOverlay');
 const closeModalBtn = document.getElementById('closeModal');
+const modalTypes = document.getElementById('modalTypes');
 const limit = 3
 let offset = 0
 const maxRecords = 151
@@ -25,6 +26,20 @@ function loadPokemonItens(offset , limit) {
             </li>`).join('')
 
         pokemonList.innerHTML += newHtml
+    })
+}
+
+modalTypes.innerHTML = '';
+
+
+
+function loadTypesModal(){
+    pokeApi.getPokemns().then((pokemons = []) => {
+        const newHtml = pokemons.map((pokemon) =>
+            `<li class="type grass">Grass</li>
+                    <li class="type poison">Poison</li>`).join('')
+
+        pokemonHeader.innerHTML += newHtml
     })
 }
 
