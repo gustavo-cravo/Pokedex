@@ -1,6 +1,13 @@
-// Esta função vai gerar o texto da lista em html Inicialmnente apenas com os dados dos nomes
-function convertHTML(pokemon){
-    return `<li class="pokemon ${pokemon.type}">
+const pokemonList = document.getElementById('pokemonList')
+const loadMoreButton = document.getElementById('loadMoreButton')
+const limit = 6
+let offset = 0
+
+
+function loadPokemonItens(offset , limit) {
+    pokeApi.getPokemns(offset , limit).then((pokemons = []) => {
+        const newHtml = pokemons.map((pokemon) => 
+            `<li class="pokemon ${pokemon.type}">
                 <span class="number">#${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>
 
@@ -12,10 +19,15 @@ function convertHTML(pokemon){
                     <img src="${pokemon.photo}"
                         alt="${pokemon.name}">
                 </div>
-            </li>`
+            </li>`).join('')
+
+        pokemonList.innerHTML += newHtml
+    })
 }
 
-pokeApi.getPokemns().then((pokemons = []) => {
+loadPokemonItens(offset, limit)
 
-    pokemonList.innerHTML += pokemons.map(convertHTML).join('')
+loadMoreButton.addEventListener('click', () => {
+    offset += limit
+    loadPokemonItens(offset, limit)
 })
