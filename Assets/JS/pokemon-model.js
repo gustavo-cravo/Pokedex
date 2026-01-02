@@ -4,10 +4,4 @@ class Pokemon{
     types = [];
     type;
     photo;
-    hp;
-    attack;
-    defense;
-    specialAttack;
-    specialDefense;
-    speed;
 }
