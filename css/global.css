@@ -1,1 +1,32 @@
 @import "normalize.css";
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    margin: 0.5rem;
+}
+
+body{
+    padding: 4px;
+}
+
+li{
+    list-style: none;
+    border-radius: 8px;
+    padding: 1rem;
+    /* max-width: 185px; */
+    background-color: green;
+    color: white;
+}
+
+ol{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 180px);
+    gap: 8px;
+    margin: 0;
+    justify-content: space-evenly;
+    justify-items: stretch;
+    padding: 0;
+}
