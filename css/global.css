@@ -4,6 +4,46 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.background_logo{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+    opacity: 0.3;
+}
+
+.background_pokemon{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0.1;
+}
+
+.header_pokemon{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.type_pokemon{
+    display:flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: .5rem;
+    width: fit-content;
+}
+
+p{
+    margin: 0;
+    font-size: 0.8rem;
+    width: auto;
+    padding: 6px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.161);
+    border-radius: 16px;
+}
+
 h1 {
     margin: 0.5rem;
 }
