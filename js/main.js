@@ -4,7 +4,7 @@ async function buscarPokemon(){
     try{
             const requisicoes = [];
 
-            for(let id = 1; id <= 2; id++){
+            for(let id = 1; id <= 25; id++){
                 requisicoes.push(fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
                 .then(response => response.json()));
             }
@@ -30,5 +30,3 @@ const pokemosFiltrados = pokemonsBuscados.map(pokemonAtual => {
    }),
    image: pokemonAtual.sprites.other["home"].front_default}
 });
-
-console.log(pokemosFiltrados);
