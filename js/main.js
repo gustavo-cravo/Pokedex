@@ -1,12 +1,11 @@
-import {Pokemon} from "./pokemon.js";
-
 // ----------- Requisição para pegar os dados dos pokemons------------
 
-async function buscarPokemon(){
+async function buscarPokemon(inicio, quantidade){
     try{
             const requisicoes = [];
+            const fim = inicio + quantidade;
 
-            for(let id = 1; id <= 25; id++){
+            for(let id = inicio; id < fim; id++){
                 requisicoes.push(fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
                 .then(response => response.json()));
             }
@@ -22,18 +21,23 @@ async function buscarPokemon(){
 
 // ----------- Filtragem dos dados ------------
 
-const pokemonsBuscados = await buscarPokemon();
+const pokemonsBuscados = await buscarPokemon(1,25);
 
-const pokemosFiltrados = pokemonsBuscados.map(pokemonAtual => {
-    
-   return {
-    id: pokemonAtual.id,
-    name: pokemonAtual.name,
-    types: pokemonAtual.types.map(item => {
-        return item.type.name
-   }),
-   image: pokemonAtual.sprites.other["home"].front_default}
-});
+function formatarPokemons(pokemonsBuscados){
+
+    return pokemonsBuscados.map(pokemonAtual => {
+        return {
+            id: pokemonAtual.id,
+            name: pokemonAtual.name,
+            types: pokemonAtual.types.map(item => {
+                return item.type.name
+            }),
+        image: pokemonAtual.sprites.other["home"].front_default
+        }
+    });
+}
+
+const pokemonsFormatados = formatarPokemons(pokemonsBuscados);
 
 // ----------- Renderização no HTML ------------
 
@@ -55,7 +59,7 @@ function renderizarPokemons(ListaDePokemons){
                     }).join("")}
                 </div>
                 <img src="assets/pokebola_fundo.png" alt="Imagem de fundo" class="background_pokemon">
-                <img src="${pokemon.image}" alt="Bulbasaur">
+                <img src="${pokemon.image}" alt="${pokemon.name}">
             </li>
         `;
 
@@ -66,4 +70,67 @@ function renderizarPokemons(ListaDePokemons){
     })
 }
 
-renderizarPokemons(pokemosFiltrados);
+renderizarPokemons(pokemonsFormatados);
+
+// ----------- Reinicia o processo ao chegar no final da página ------------
+
+let proximoId = 26;
+
+const quantidadePorBusca = 25;
+
+let carregando = false;
+
+async function carregarMaisPokemons() {
+
+    if (carregando) {
+        return;
+    }
+
+    carregando = true;
+
+    try {
+
+        const pokemonsBuscados = await buscarPokemon(
+                proximoId,
+                quantidadePorBusca
+            );
+
+        const pokemonsFormatados = formatarPokemons(pokemonsBuscados);
+
+        renderizarPokemons(pokemonsFormatados);
+
+        proximoId += quantidadePorBusca;
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar Pokémon:",
+            erro
+        );
+
+    } finally {
+
+        carregando = false;
+
+    }
+}
+
+// ----------- Identifica um elemento invisível para reafazer o processo de requisição ------------
+
+
+const fimLista = document.getElementById("fim_lista");
+
+const observer = new IntersectionObserver(entries => {
+
+    const elementoObservado = entries[0];
+
+    if (elementoObservado.isIntersecting) {
+        carregarMaisPokemons();
+    }
+
+},
+{
+    rootMargin: "200px"
+});
+
+observer.observe(fimLista);
