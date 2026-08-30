@@ -26,6 +26,10 @@
     margin-bottom: .5rem;
 }
 
+.titulo_pokemon{
+text-transform: capitalize;
+}
+
 .type_pokemon{
     display:flex;
     flex-direction: column;
@@ -57,7 +61,6 @@ li{
     border-radius: 8px;
     padding: 1.5rem 1rem;
     height: 120px;
-    background-color: green;
     color: white;
     position: relative;
     overflow: hidden;

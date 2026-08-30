@@ -1,5 +1,7 @@
 import {Pokemon} from "./pokemon.js";
 
+// ----------- Requisição para pegar os dados dos pokemons------------
+
 async function buscarPokemon(){
     try{
             const requisicoes = [];
@@ -18,6 +20,8 @@ async function buscarPokemon(){
     }
 } 
 
+// ----------- Filtragem dos dados ------------
+
 const pokemonsBuscados = await buscarPokemon();
 
 const pokemosFiltrados = pokemonsBuscados.map(pokemonAtual => {
@@ -30,3 +34,36 @@ const pokemosFiltrados = pokemonsBuscados.map(pokemonAtual => {
    }),
    image: pokemonAtual.sprites.other["home"].front_default}
 });
+
+// ----------- Renderização no HTML ------------
+
+
+function renderizarPokemons(ListaDePokemons){
+    const listaPokemons = document.getElementById("lista_pokemons");
+
+    ListaDePokemons.forEach(pokemon =>{
+
+        const PokemonHTML = `
+            <li class="${pokemon.types[0]}">
+                <div class="header_pokemon">
+                    <div class="titulo_pokemon">${pokemon.name}</div>
+                    <div class="number_pokemon">#${pokemon.id}</div>
+                </div>
+                <div class="type_pokemon">
+                    ${pokemon.types.map(type => {
+                    return `<p>${type}</p>`;
+                    }).join("")}
+                </div>
+                <img src="assets/pokebola_fundo.png" alt="Imagem de fundo" class="background_pokemon">
+                <img src="${pokemon.image}" alt="Bulbasaur">
+            </li>
+        `;
+
+        listaPokemons.insertAdjacentHTML(
+            "beforeend",
+            PokemonHTML
+        );
+    })
+}
+
+renderizarPokemons(pokemosFiltrados);
