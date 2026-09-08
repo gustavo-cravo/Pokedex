@@ -23,72 +23,7 @@
         <h1>Pokedex</h1> 
         <img src="assets/pokebola_fundo.png" alt="Imagem de fundo" class="background_logo">
 
-        <div class="modal grass">
-            
-            <div class="voltar">
-                <button class="btn-voltar">
-                <img src="./assets/arrow-left-solid-full (1).svg" alt="Voltar">
-            </button>
-            </div>
-            
-            <div class="header_modal">
-                <p class="modal_name_pokemon">Bulbasaur</p>
-                <p class="id_pokemon_modal">#1</p>
-            </div>
-
-            
-            <div class="formato_img_modal">
-                <img id="img_modal" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png" alt="Pokemon_selecionado">
-                <img id="pokebola_modal" src="assets/pokebola_fundo.png" alt="Fundo_modal">
-            </div>
-            
-
-            <div class="modal_content">
-                <div class="header_content">
-                    <p class="modal_name">Base Status</p>
-                </div>
-
-                <div class="info_modal">
-                    <div class="info_progress">
-                        <p class="atributo">HP</p>
-                        <label>
-                            45 <progress  value="45" max="100"></progress>
-                        </label>
-                    </div>
-                    <div class="info_progress">
-                        <p class="atributo">Attack</p>
-                        <label>
-                            49 <progress value="49" max="100"></progress>
-                        </label>
-                    </div>
-                    <div class="info_progress">
-                        <p class="atributo">Defense</p>
-                        <label>
-                            49 <progress value="49" max="100"></progress>
-                        </label>
-                    </div>
-                    <div class="info_progress">
-                        <p class="atributo">Sp.Att</p>
-                        <label>
-                            65 <progress value="65" max="100"></progress>
-                        </label>
-                    </div>
-                    <div class="info_progress">
-                        <p class="atributo">Sp.Def</p>
-                        <label>
-                            65 <progress value="65" max="100"></progress>
-                        </label>
-                    </div>
-                    <div class="info_progress">
-                        <p class="atributo">Speed</p>
-                        <label>
-                            45 <progress value="45" max="100"></progress>
-                        </label>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
+        <div class="modal modal-aberto grass"></div>
 
 
         <ol id="lista_pokemons"></ol>
@@ -97,5 +32,6 @@
         <div id="fim_lista"></div>
     </main>
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/modal.js"></script>
 </body>
 </html>

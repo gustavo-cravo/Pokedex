@@ -4,7 +4,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.modal{
+.modal {
+    display: none;
+}
+
+.modal.modal-aberto{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -80,6 +84,7 @@
     color: white;
     font-size: 25px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .modal_name{

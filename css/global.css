@@ -36,6 +36,7 @@ text-transform: capitalize;
     gap: 4px;
     margin-bottom: .5rem;
     width: fit-content;
+    text-transform: capitalize;
 }
 
 p{

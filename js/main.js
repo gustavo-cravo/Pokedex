@@ -21,7 +21,7 @@ async function buscarPokemon(inicio, quantidade){
 
 // ----------- Filtragem dos dados ------------
 
-const pokemonsBuscados = await buscarPokemon(1,25);
+const pokemonsBuscados = await buscarPokemon(1,75);
 
 function formatarPokemons(pokemonsBuscados){
 
@@ -32,7 +32,7 @@ function formatarPokemons(pokemonsBuscados){
             types: pokemonAtual.types.map(item => {
                 return item.type.name
             }),
-        image: pokemonAtual.sprites.other["home"].front_default
+            image: pokemonAtual.sprites.other["home"].front_default
         }
     });
 }
@@ -48,7 +48,7 @@ function renderizarPokemons(ListaDePokemons){
     ListaDePokemons.forEach(pokemon =>{
 
         const PokemonHTML = `
-            <li class="${pokemon.types[0]}">
+            <li class="${pokemon.types[0]} pokemon" data-id="${pokemon.id}">
                 <div class="header_pokemon">
                     <div class="titulo_pokemon">${pokemon.name}</div>
                     <div class="number_pokemon">#${pokemon.id}</div>
@@ -74,9 +74,9 @@ renderizarPokemons(pokemonsFormatados);
 
 // ----------- Reinicia o processo ao chegar no final da página ------------
 
-let proximoId = 26;
+let proximoId = 76;
 
-const quantidadePorBusca = 25;
+const quantidadePorBusca = 75;
 
 let carregando = false;
 
